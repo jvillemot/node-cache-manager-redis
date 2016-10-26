@@ -32,7 +32,7 @@ var redisCache = cacheManager.caching({
 	ttl: 600
 });
 
-var ttl = 5;
+var ttl = {ttl: 5};
 
 // listen for redis connection error event
 redisCache.store.events.on('redisError', function(error) {
@@ -91,7 +91,7 @@ var multiCache = cacheManager.multiCaching([memoryCache, redisCache]);
 
 userId2 = 456;
 key2 = 'user_' + userId;
-ttl = 5;
+ttl = {ttl: 5};
 
 // Sets in all caches.
 multiCache.set('foo2', 'bar2', ttl, function(err) {
